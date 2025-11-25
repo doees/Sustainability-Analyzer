@@ -1,0 +1,1085 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CESGS Sustainability Analyzer</title>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Theme Variables */
+    body.theme-blue {
+      --primary: #1E40FF;
+      --secondary: #0EA5E9;
+      --accent: #22C55E;
+      --bg: #F8FAFC;
+      --surface: #FFFFFF;
+      --text: #0F172A;
+      --text-secondary: #475569;
+      --border: #E2E8F0;
+    }
+
+    body.theme-green {
+      --primary: #16A34A;
+      --secondary: #10B981;
+      --accent: #059669;
+      --bg: #F6F7F5;
+      --surface: #FFFFFF;
+      --text: #1C1917;
+      --text-secondary: #57534E;
+      --border: #E7E5E4;
+    }
+
+    body.theme-dark {
+      --primary: #60A5FA;
+      --secondary: #34D399;
+      --accent: #A78BFA;
+      --bg: #0B1220;
+      --surface: #111827;
+      --text: #E5E7EB;
+      --text-secondary: #9CA3AF;
+      --border: #1F2937;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      height: 100%;
+      min-height: 100%;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      height: 72px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 64px;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 24px;
+      border: none;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-primary:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      padding: 12px 28px;
+      border-radius: 24px;
+      border: 2px solid var(--primary);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-secondary:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 64px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .badges {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px 80px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* Form Card */
+    .form-card {
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-group {
+      margin-bottom: 32px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: 15px;
+      background: var(--bg);
+      color: var(--text);
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(30, 64, 255, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .upload-area {
+      border: 2px dashed var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      text-align: center;
+      background: var(--bg);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .upload-area:hover {
+      border-color: var(--primary);
+      background: var(--surface);
+    }
+
+    .upload-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 16px;
+      opacity: 0.5;
+    }
+
+    .upload-area p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .upload-area small {
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      accent-color: var(--primary);
+    }
+
+    .checkbox-group label {
+      margin: 0;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .tooltip {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background: var(--text-secondary);
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 11px;
+      line-height: 16px;
+      cursor: help;
+      margin-left: 4px;
+    }
+
+    .privacy-note {
+      background: var(--bg);
+      border-left: 3px solid var(--accent);
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 24px;
+      display: flex;
+      align-items: start;
+      gap: 12px;
+    }
+
+    .action-bar {
+      display: flex;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .action-bar .btn-primary,
+    .action-bar .btn-secondary {
+      flex: 1;
+      padding: 16px;
+      font-size: 16px;
+    }
+
+    /* Sidebar Info */
+    .info-card {
+      background: var(--surface);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      position: sticky;
+      top: 96px;
+    }
+
+    .info-card h3 {
+      font-size: 20px;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .info-list {
+      list-style: none;
+    }
+
+    .info-list li {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: start;
+      gap: 12px;
+    }
+
+    .info-list li:last-child {
+      border-bottom: none;
+    }
+
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .info-list li span {
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .output-badge {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    /* Preview Sections */
+    .preview-section {
+      max-width: 1440px;
+      margin: 48px auto 0;
+      padding: 0 64px;
+    }
+
+    .preview-card {
+      background: var(--surface);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      margin-bottom: 32px;
+    }
+
+    .preview-card h3 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .progress-bar {
+      background: var(--bg);
+      height: 8px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .progress-fill {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      height: 100%;
+      width: 65%;
+      border-radius: 8px;
+      transition: width 0.3s;
+    }
+
+    .status-steps {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .status-steps span.active {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .job-id {
+      background: var(--bg);
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      margin-top: 16px;
+      display: inline-block;
+    }
+
+    /* Results Table */
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .results-table th {
+      text-align: left;
+      padding: 12px;
+      background: var(--bg);
+      font-weight: 600;
+      color: var(--text-secondary);
+      border-bottom: 2px solid var(--border);
+    }
+
+    .results-table td {
+      padding: 16px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .status-badge {
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .status-covered {
+      background: rgba(34, 197, 94, 0.1);
+      color: #16A34A;
+    }
+
+    .status-partial {
+      background: rgba(251, 191, 36, 0.1);
+      color: #D97706;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 64px;
+      border-top: 1px solid var(--border);
+      margin-top: 80px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .footer p {
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    /* Theme Switcher */
+    .theme-switcher {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      display: flex;
+      gap: 12px;
+      background: var(--surface);
+      padding: 12px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+    }
+
+    .theme-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .theme-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .theme-btn.active {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(30, 64, 255, 0.2);
+    }
+
+    .theme-btn:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .theme-blue-btn {
+      background: linear-gradient(135deg, #1E40FF, #0EA5E9);
+    }
+
+    .theme-green-btn {
+      background: linear-gradient(135deg, #16A34A, #10B981);
+    }
+
+    .theme-dark-btn {
+      background: linear-gradient(135deg, #111827, #60A5FA);
+    }
+
+    /* Tag Input */
+    .tag-input-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      background: var(--bg);
+      min-height: 52px;
+    }
+
+    .tag {
+      background: var(--primary);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tag-remove {
+      cursor: pointer;
+      font-weight: bold;
+      opacity: 0.7;
+    }
+
+    .tag-remove:hover {
+      opacity: 1;
+    }
+
+    .tag-input {
+      border: none;
+      background: transparent;
+      flex: 1;
+      min-width: 120px;
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body class="theme-blue"><!-- Header -->
+  <header class="header">
+   <div class="logo">
+    <svg class="logo-icon" viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4C16 4 8 8 8 16C8 20 10 24 16 28C22 24 24 20 24 16C24 8 16 4 16 4Z" fill="currentColor" opacity="0.2" /> <path d="M16 4V28M8 16C8 8 16 4 16 4C16 4 24 8 24 16C24 20 22 24 16 28C10 24 8 20 8 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M12 14C12 14 14 16 16 16C18 16 20 14 20 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    </svg><span>CESGS</span>
+   </div>
+   <nav class="nav"><a href="#home">Home</a> <a href="#how-it-works">How it Works</a> <a href="#results">Results</a> <a href="#about">About</a> <button class="btn-primary">Start Analysis</button>
+   </nav>
+  </header><!-- Hero Section -->
+  <section class="hero">
+   <h1>Automate Your Sustainability Report Mapping</h1>
+   <p>Upload SR, map to GRI/SASB in minutes — with evidence &amp; recommendations.</p>
+   <div class="badges"><span class="badge">AI</span> <span class="badge">RAG</span> <span class="badge">n8n Orchestration</span> <span class="badge">GRI</span> <span class="badge">SASB</span> <span class="badge">ISSB</span>
+   </div>
+  </section><!-- Main Content -->
+  <div class="main-content"><!-- Form Card -->
+   <div class="form-card">
+    <form id="analysisForm">
+     <div class="form-group"><label for="companyName">Company Name</label> <input type="text" id="companyName" placeholder="e.g., Tata Realty Indonesia" required>
+     </div>
+     <div class="form-group"><label for="reportYear">Report Year</label> <select id="reportYear" required> <option value="">Select year</option> <option value="2025">2025</option> <option value="2024">2024</option> <option value="2023">2023</option> <option value="2022">2022</option> </select>
+     </div>
+     <div class="form-group"><label for="sector">Sector / Industry</label> <select id="sector" required> <option value="">Select sector</option> <option value="manufacturing">Manufacturing</option> <option value="energy">Energy</option> <option value="finance">Finance</option> <option value="technology">Technology</option> <option value="real-estate">Real Estate</option> <option value="healthcare">Healthcare</option> </select>
+     </div>
+     <div class="form-group"><label for="materialTopics"> Material Topics <span class="tooltip" title="Accepted as comma-separated list or tags">?</span> </label>
+      <div class="tag-input-container" id="tagContainer"><span class="tag">Energy <span class="tag-remove" onclick="removeTag(this)">×</span></span> <span class="tag">Waste <span class="tag-remove" onclick="removeTag(this)">×</span></span> <span class="tag">Labor <span class="tag-remove" onclick="removeTag(this)">×</span></span> <span class="tag">GHG Emissions <span class="tag-remove" onclick="removeTag(this)">×</span></span> <input type="text" class="tag-input" id="tagInput" placeholder="Add topic and press Enter">
+      </div>
+     </div>
+     <div class="form-group"><label>Sustainability Report (PDF)</label>
+      <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+       <svg class="upload-icon" viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="8" width="40" height="48" rx="4" stroke="currentColor" stroke-width="2" /> <path d="M20 8V4C20 2.89543 20.8954 2 22 2H42C43.1046 2 44 2.89543 44 4V8" stroke="currentColor" stroke-width="2" /> <path d="M32 24V44M32 24L26 30M32 24L38 30" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+       </svg>
+       <p>Drop your SR PDF here or click to browse</p><small>Max 50 MB. Scanned? Enable OCR.</small>
+      </div><input type="file" id="fileInput" accept=".pdf" style="display: none;">
+      <div class="checkbox-group"><input type="checkbox" id="enableOCR"> <label for="enableOCR"> Enable OCR <span class="tooltip" title="Improves parsing for scanned reports">?</span> </label>
+      </div>
+     </div>
+     <div class="privacy-note">
+      <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5V9C3 13.5 6 17.5 10 18C14 17.5 17 13.5 17 9V5L10 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /> <path d="M10 10V10.01M10 7V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      </svg><span>Files are processed securely and stored within CESGS workspace.</span>
+     </div>
+     <div class="action-bar"><button type="submit" class="btn-primary">Submit &amp; Analyze</button> <button type="button" class="btn-secondary" onclick="showPreview()">Preview Sample Result</button>
+     </div>
+    </form>
+   </div><!-- Sidebar Info -->
+   <div class="info-card">
+    <h3>What you'll get:</h3>
+    <ul class="info-list">
+     <li>
+      <svg class="check-icon" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" /> <path d="M6 10L9 13L14 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg><span>GRI/SASB Mapping (Covered / Partial / Not Covered)</span></li>
+     <li>
+      <svg class="check-icon" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" /> <path d="M6 10L9 13L14 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg><span>Evidence with Page Numbers</span></li>
+     <li>
+      <svg class="check-icon" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" /> <path d="M6 10L9 13L14 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg><span>Metrics Extracted (JSON)</span></li>
+     <li>
+      <svg class="check-icon" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" /> <path d="M6 10L9 13L14 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg><span>Recommendations &amp; Data Gaps</span></li>
+    </ul>
+    <div class="output-badge">
+     Outputs to Google Sheets + PDF Summary
+    </div>
+   </div>
+  </div><!-- Preview Sections -->
+  <div class="preview-section">
+    <!-- Status Panel -->
+   <div class="preview-card">
+    <h3>
+     <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" /> <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+     </svg> Status Panel</h3>
+    <div class="progress-bar">
+     <div class="progress-fill"></div>
+    </div>
+    <div class="status-steps"><span class="active">Parsing</span> <span class="active">Chunking</span> <span class="active">Retrieval</span> <span>Mapping</span> <span>Writing to Sheets</span>
+    </div>
+    <div class="job-id">
+     Job ID: JOB-2025-1109-001
+    </div>
+   </div>
+
+    <!-- Report Summary (baru) -->
+    <div class="preview-card" id="reportSummaryCard">
+      <h3>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M8 7H16M8 11H14M8 15H12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Report Summary
+      </h3>
+      <div id="reportSummaryContent" style="font-size:14px; color:var(--text-secondary); margin-top:8px;">
+        <p>No report analyzed yet. Submit a PDF to see summary here.</p>
+      </div>
+    </div>
+
+   <!-- Results Snapshot -->
+   <div class="preview-card">
+    <h3>
+     <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" /> <path d="M3 9H21M9 3V21" stroke="currentColor" stroke-width="2" />
+     </svg> Results Snapshot</h3>
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Material Topic</th>
+          <th>Framework</th>
+          <th>Code</th>
+          <th>Status</th>
+          <th>Pages</th>
+          <th>Recommendation</th>
+        </tr>
+      </thead>
+      <tbody id="resultsBody">
+        <!-- rows akan diisi via JavaScript dari backend -->
+      </tbody>
+    </table>
+   </div>
+  </div>
+  <!-- Export / Download Result -->
+  <div class="preview-card">
+    <h3>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 3V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M8 11L12 15L16 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="4" y="15" width="16" height="6" rx="2" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      Export Result
+    </h3>
+    <p style="font-size:14px; color:var(--text-secondary); margin-top:8px; margin-bottom:16px;">
+      Download JSON hasil analisis terakhir untuk keperluan debugging, dokumentasi, atau integrasi manual (mis. n8n, Google Sheets, dsb.).
+    </p>
+    <button type="button"
+            id="downloadJsonBtn"
+            class="btn-secondary"
+            style="width:100%; text-align:center;">
+      Download JSON Result
+    </button>
+  </div>
+</div> <!-- penutup .preview-section -->
+  <!-- Footer -->
+  <footer class="footer">
+   <div class="footer-links"><a href="#terms">Terms</a> <a href="#privacy">Privacy</a> <a href="#contact">Contact CESGS</a>
+   </div>
+   <p>© 2025 CESGS. Automating sustainability compliance.</p>
+  </footer><!-- Theme Switcher -->
+  <div class="theme-switcher">
+    <button class="theme-btn theme-blue-btn active"
+            onclick="switchTheme('blue', this)"
+            aria-label="Neo-Minimal Blue Theme"
+            title="Neo-Minimal Blue"></button>
+
+    <button class="theme-btn theme-green-btn"
+            onclick="switchTheme('green', this)"
+            aria-label="Eco-Earth Green Theme"
+            title="Eco-Earth Green"></button>
+
+    <button class="theme-btn theme-dark-btn"
+            onclick="switchTheme('dark', this)"
+            aria-label="Pro Dark Mode Theme"
+            title="Pro Dark Mode"></button>
+  </div>
+  <script>
+    // Global state untuk menyimpan hasil analisis terakhir
+    let lastAnalysisResult = null;
+
+    // Theme Switcher
+    function switchTheme(theme, el) {
+      const body = document.body;
+      body.className = `theme-${theme}`;
+
+      document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      if (el) {
+        el.classList.add('active');
+      }
+    }
+
+    // Tag Input
+    const tagInput = document.getElementById('tagInput');
+    const tagContainer = document.getElementById('tagContainer');
+
+    tagInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const value = this.value.trim();
+        if (value) {
+          const tag = document.createElement('span');
+          tag.className = 'tag';
+          tag.innerHTML = `${value} <span class="tag-remove" onclick="removeTag(this)">×</span>`;
+          tagContainer.insertBefore(tag, tagInput);
+          this.value = '';
+        }
+      }
+    });
+
+    function removeTag(element) {
+      element.parentElement.remove();
+    }
+    
+    // Form Submission → kirim ke Flask /analyze
+    document.getElementById('analysisForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const companyNameInput = document.getElementById('companyName');
+      const reportYearInput = document.getElementById('reportYear');
+      const sectorInput = document.getElementById('sector');
+      const enableOcrInput = document.getElementById('enableOCR');
+      const fileInput = document.getElementById('fileInput');
+
+      const companyName = companyNameInput.value.trim();
+      const reportYear = reportYearInput.value;
+      const sector = sectorInput.value;
+
+      // Kumpulkan material topics dari tag
+      const tagSpans = document.querySelectorAll('.tag');
+      const topics = [];
+      tagSpans.forEach(tag => {
+        const text = tag.childNodes[0].nodeValue.trim();
+        if (text) topics.push(text);
+      });
+
+      // Validasi front-end
+      if (!companyName) {
+        alert('Please provide company name.');
+        companyNameInput.focus();
+        return;
+      }
+      if (!reportYear) {
+        alert('Please select report year.');
+        reportYearInput.focus();
+        return;
+      }
+      if (!sector) {
+        alert('Please select sector.');
+        sectorInput.focus();
+        return;
+      }
+      if (topics.length === 0) {
+        alert('Please provide at least one Material Topic.');
+        return;
+      }
+
+      // Siapkan FormData untuk dikirim ke Flask
+      const formData = new FormData();
+      formData.append('companyName', companyName);
+      formData.append('reportYear', reportYear);
+      formData.append('sector', sector);
+      formData.append('enableOCR', enableOcrInput.checked ? 'true' : 'false');
+      formData.append('materialTopics', topics.join(','));
+
+      if (fileInput.files.length > 0) {
+        formData.append('reportFile', fileInput.files[0]);
+      }
+
+      // Mulai animasi progress bar & status steps (seperti sebelumnya)
+      const progressFill = document.querySelector('.progress-fill');
+      progressFill.style.width = '0%';
+      let width = 0;
+      const interval = setInterval(() => {
+        if (width >= 90) { // stop di 90%, sisanya setelah response
+          clearInterval(interval);
+        } else {
+          width += 5;
+          progressFill.style.width = width + '%';
+        }
+      }, 200);
+
+      const steps = document.querySelectorAll('.status-steps span');
+      steps.forEach(step => step.classList.remove('active'));
+      let currentStep = 0;
+      const stepInterval = setInterval(() => {
+        if (currentStep < steps.length - 1) { // sisakan step terakhir untuk saat respose
+          steps[currentStep].classList.add('active');
+          currentStep++;
+        } else {
+          clearInterval(stepInterval);
+        }
+      }, 800);
+
+      try {
+        const response = await fetch('/analyze', {
+          method: 'POST',
+          body: formData
+        });
+
+        let data;
+        try {
+          data = await response.json();
+        } catch (err) {
+          alert('Server returned a non-JSON response.');
+          return;
+        }
+
+        if (!response.ok || !data || data.status !== 'success') {
+          // Tambah handling khusus untuk 413 (file terlalu besar)
+          if (response.status === 413) {
+            alert(data.message || 'File too large. Please upload a smaller report.');
+          } else {
+            alert('Error from server: ' + (data.message || 'Unknown error'));
+          }
+          return;
+        }
+
+        // Selesaikan progress bar & aktifkan semua step
+        progressFill.style.width = '100%';
+        steps.forEach(step => step.classList.add('active'));
+
+        // Update Job ID di status panel
+        const jobIdEl = document.querySelector('.job-id');
+        if (jobIdEl && data.job_id) {
+          jobIdEl.textContent = 'Job ID: ' + data.job_id;
+        }
+
+        // --- Update Report Summary dari pdf_info ---
+        const summaryContainer = document.getElementById('reportSummaryContent');
+        if (summaryContainer && data.result && data.result.pdf_info) {
+          const pdfInfo = data.result.pdf_info;
+
+          const fileName = pdfInfo.file_name || '(no file name)';
+          const numPages = pdfInfo.num_pages != null ? pdfInfo.num_pages : 'Unknown';
+          const excerpt = pdfInfo.sample_excerpt || 'No text extracted from first page.';
+
+          summaryContainer.innerHTML = `
+            <p style="margin-bottom:4px;">
+              <strong>File:</strong> ${fileName}
+            </p>
+            <p style="margin-bottom:4px;">
+              <strong>Pages:</strong> ${numPages}
+            </p>
+            <p style="margin-top:8px;">
+              <strong>First page excerpt:</strong><br/>
+              <span style="font-style:italic; font-size:13px;">
+                ${excerpt}
+              </span>
+            </p>
+          `;
+        }
+
+
+        // --- Update tabel Results Snapshot dari backend ---
+        const tbody = document.getElementById('resultsBody');
+        if (tbody) {
+          tbody.innerHTML = ''; // clear
+
+          const mappings = data.result && Array.isArray(data.result.mappings)
+            ? data.result.mappings
+            : [];
+
+          if (mappings.length === 0) {
+            tbody.innerHTML = `
+              <tr>
+                <td colspan="6" style="padding:16px; text-align:center; color:var(--text-secondary);">
+                  No mapping result (dummy). Please check your input.
+                </td>
+              </tr>
+            `;
+          } else {
+            mappings.forEach(row => {
+              const tr = document.createElement('tr');
+
+              const statusText = row.status || '-';
+              let statusClass = '';
+              if (statusText.toLowerCase() === 'covered') {
+                statusClass = 'status-covered';
+              } else if (statusText.toLowerCase() === 'partial') {
+                statusClass = 'status-partial';
+              } else {
+                // bisa tambah class lain kalau mau (mis. not-covered)
+                statusClass = '';
+              }
+
+              tr.innerHTML = `
+                <td>${row.material_topic || '-'}</td>
+                <td>${row.framework || '-'}</td>
+                <td>${row.code || '-'}</td>
+                <td>
+                  <span class="status-badge ${statusClass}">
+                    ${statusText}
+                  </span>
+                </td>
+                <td>${row.pages || '-'}</td>
+                <td>${row.recommendation || '-'}</td>
+              `;
+
+              tbody.appendChild(tr);
+            });
+          }
+        }
+
+        // Simpan hasil terakhir ke global state
+        lastAnalysisResult = data.result || null;
+
+        alert('Job received by backend. Results table updated from server.');
+
+      } catch (err) {
+        console.error(err);
+        alert('Network or server error: ' + err.message);
+      }
+    });
+
+    function showPreview() {
+      document.querySelector('.preview-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // File Upload
+    document.getElementById('fileInput').addEventListener('change', function(e) {
+      if (e.target.files.length > 0) {
+        const fileName = e.target.files[0].name;
+        const uploadArea = document.querySelector('.upload-area p');
+        uploadArea.textContent = `Selected: ${fileName}`;
+      }
+    });
+    // Handler untuk tombol Download JSON Result
+    const downloadBtn = document.getElementById('downloadJsonBtn');
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', () => {
+        if (!lastAnalysisResult) {
+          alert('Belum ada hasil analisis. Silakan submit formulir terlebih dahulu.');
+          return;
+        }
+
+        try {
+          const payload = {
+            generated_at: new Date().toISOString(),
+            source: 'CESGS Sustainability Analyzer',
+            result: lastAnalysisResult
+          };
+
+          const jsonStr = JSON.stringify(payload, null, 2);
+          const blob = new Blob([jsonStr], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+
+          const a = document.createElement('a');
+          a.href = url;
+          // contoh nama file:
+          a.download = `cesgs_result_${(lastAnalysisResult.company_name || 'company').replace(/\s+/g, '_')}.json`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        } catch (err) {
+          console.error(err);
+          alert('Gagal membuat file JSON: ' + err.message);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
