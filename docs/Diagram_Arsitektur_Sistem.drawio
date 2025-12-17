@@ -1,0 +1,134 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" version="29.2.6">
+  <diagram name="Page-1" id="zXkgLwTBRdJO-Cv34h8d">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-1" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="3LYi20b3evUPTe3GRQ-p-4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-2" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" value="Start" vertex="1">
+          <mxGeometry height="60" width="100" x="510" y="647.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-3" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="3LYi20b3evUPTe3GRQ-p-6" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-4" parent="1" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" value="Upload PDF" vertex="1">
+          <mxGeometry height="60" width="110" x="650" y="647.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-5" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="3LYi20b3evUPTe3GRQ-p-8" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-6" parent="1" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" value="&amp;nbsp;n8n menerima dan menyimpan PDF" vertex="1">
+          <mxGeometry height="60" width="120" x="800" y="647.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-42" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="3LYi20b3evUPTe3GRQ-p-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-8" parent="1" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" value="AI membaca dan mengekstrak isi" vertex="1">
+          <mxGeometry height="60" width="120" x="800" y="727.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-45" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="3LYi20b3evUPTe3GRQ-p-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-10" parent="1" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" value="Membandingkan isi dengan database GRI/SASB pakai LLM Gemini" vertex="1">
+          <mxGeometry height="70" width="155" x="482.5" y="722.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-11" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="3LYi20b3evUPTe3GRQ-p-31" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-12" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="3LYi20b3evUPTe3GRQ-p-18" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-13" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="3LYi20b3evUPTe3GRQ-p-20" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-14" parent="1" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" value="AI menentukan coverage status" vertex="1">
+          <mxGeometry height="120" width="120" x="500" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-15" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="3LYi20b3evUPTe3GRQ-p-22" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-37" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="3LYi20b3evUPTe3GRQ-p-24">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="1030" />
+              <mxPoint x="620" y="1030" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-39" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="3LYi20b3evUPTe3GRQ-p-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-18" parent="1" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" value="Partially Covered" vertex="1">
+          <mxGeometry height="60" width="120" x="500" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-38" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="1030" />
+              <mxPoint x="620" y="1030" />
+            </Array>
+            <mxPoint x="620" y="1070" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-20" parent="1" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" value="Not Covered" vertex="1">
+          <mxGeometry height="60" width="120" x="640" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-21" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="3LYi20b3evUPTe3GRQ-p-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-22" parent="1" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" value="Identifikasi Evidence Pages" vertex="1">
+          <mxGeometry height="60" width="120" x="420" y="1070" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-40" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="3LYi20b3evUPTe3GRQ-p-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-24" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;arcSize=12;" value="Membuat rekomendasi" vertex="1">
+          <mxGeometry height="60" width="120" x="560" y="1070" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-25" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="3LYi20b3evUPTe3GRQ-p-28" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-26" parent="1" style="whiteSpace=wrap;html=1;rounded=1;strokeWidth=2;arcSize=12;" value="Mengubah hasil menjadi Google Sheets" vertex="1">
+          <mxGeometry height="60" width="120" x="490" y="1169" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-27" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="3LYi20b3evUPTe3GRQ-p-29" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-28" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;rounded=1;strokeWidth=2;arcSize=12;" value="Google Sheets" vertex="1">
+          <mxGeometry height="60" width="120" x="640" y="1169" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-29" parent="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" value="End" vertex="1">
+          <mxGeometry height="60" width="100" x="790" y="1169" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-36" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="3LYi20b3evUPTe3GRQ-p-24">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="1030" />
+              <mxPoint x="620" y="1030" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-31" parent="1" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" value="Covered" vertex="1">
+          <mxGeometry height="60" width="120" x="360" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-32" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Isi&lt;div&gt;relevan&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="100" x="400" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-33" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;Isi kurang&lt;/div&gt;&lt;div&gt;relevan&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="145" x="520" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-34" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Isi tidak relevan" vertex="1">
+          <mxGeometry height="30" width="60" x="700" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-44" edge="1" parent="1" source="3LYi20b3evUPTe3GRQ-p-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="3LYi20b3evUPTe3GRQ-p-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3LYi20b3evUPTe3GRQ-p-41" parent="1" style="whiteSpace=wrap;html=1;strokeWidth=2;rounded=1;arcSize=12;" value="Hasil Eksraksi di-&lt;i&gt;embedding &lt;/i&gt;dan di simpan di Zillis" vertex="1">
+          <mxGeometry height="60" width="120" x="660" y="727.5" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
