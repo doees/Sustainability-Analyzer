@@ -7,7 +7,7 @@
 1. Khairunnisa Keisha Anjani (NIM. 164241015)
 2. Muhammad Firdaus (NIM. 164241030)
 3. Mikael Ardiyanta Widyadana Purniawan (NIM. 164241031)
-4. Muhammad Iqbal Aulia Fattah(NIM. 164241052)
+4. Muhammad Iqbal Aulia Fattah (NIM. 164241052)
 
 ## Jenis Proyek
 **Tugas Akhir**
@@ -61,3 +61,4 @@ Seluruh proses komputasi AI dilakukan pada sisi server, sedangkan perangkat clie
 ---
 
 ## Struktur Folder
+
