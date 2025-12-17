@@ -13,9 +13,9 @@
 **Tugas Akhir**
 
 ## Deskripsi Singkat
-Proyek ini bertujuan untuk mengembangkan sebuah sistem otomatis berbasis Artificial Intelligence (AI) yang mampu menganalisis laporan keberlanjutan perusahaan dalam format PDF dan memetakan kontennya terhadap standar keberlanjutan internasional, yaitu **GRI (Global Reporting Initiative)** dan **SASB (Sustainability Accounting Standards Board)**.
+Proyek ini bertujuan untuk membangun sebuah sistem otomatis berbasis Artificial Intelligence (AI) yang mampu mengekstraksi dan menganalisis laporan keberlanjutan perusahaan dalam format PDF, kemudian memetakan isi laporan tersebut ke dalam standar keberlanjutan internasional, yaitu Global Reporting Initiative (GRI) dan Sustainability Accounting Standards Board (SASB).
 
-Sistem dirancang dengan arsitektur **client–server** berbasis RESTful API, di mana pengguna dapat mengakses aplikasi melalui web browser, sementara seluruh proses analisis dan pemrosesan AI dijalankan pada sisi server.
+Sistem ini dirancang menggunakan arsitektur client–server dengan pendekatan RESTful API, di mana pengguna berinteraksi melalui aplikasi berbasis web, sementara seluruh proses analisis data dan pemrosesan AI dilakukan di sisi server.
 
 ---
 
@@ -61,4 +61,5 @@ Seluruh proses komputasi AI dilakukan pada sisi server, sedangkan perangkat clie
 ---
 
 ## Struktur Folder
+
 
