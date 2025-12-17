@@ -14,6 +14,7 @@ from pymilvus import (
 )
 
 
+
 # Load Environment Variables
 
 load_dotenv()
@@ -182,3 +183,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
     main(sys.argv[1])
+
